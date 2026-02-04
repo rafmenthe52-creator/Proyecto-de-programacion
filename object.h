@@ -1,3 +1,12 @@
+/**
+ * @brief It defines the object module interface
+ *
+ * @file object.h
+ * @author Rafael Velasco-RV
+ * @version 0
+ * @date 04-02-2025
+ * @copyright GNU Public License
+ */
 #ifndef OBJECT_H
 #define OBJECT_H
 
