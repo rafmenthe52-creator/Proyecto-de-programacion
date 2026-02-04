@@ -52,6 +52,14 @@ Status object_destroy(Object* object) {
   return OK;
 }
 
+Id object_get_id(Object* object){
+  if(!object){
+    return NO_ID;
+  }
+
+  return object->id;
+}
+
 Status object_set_name(Object* object; char* name){
   if(!object|!name){
     return ERROR
@@ -66,7 +74,7 @@ Status object_set_name(Object* object; char* name){
 
 char* object_get_name(Object* object){
   if(!object){
-    return ERROR;
+    return NULL;
   }
 
   return object->name;
@@ -86,8 +94,31 @@ Status object_set_location(Object* object, Id id){
 
 Id object_get_location(Object* object){
   if(!object){
-    return ERROR;
+    return NO_ID;
   }
 
   return object->object_location;
+}
+
+Status object_print(Object* object) {
+  Id idaux = NO_ID;
+
+  /* Error Control */
+  if (!object) {
+    return ERROR;
+  }
+
+  /* 1. Print the id and the name of the object */
+  fprintf(stdout, "--> object (Id: %ld; Name: %s)\n", object, object->name);
+
+  /* 2. Print the objects location */
+  idaux = object_get_location(object);
+  if (idaux != NO_ID) {
+    fprintf(stdout, "---> Object location: %ld.\n", idaux);
+  } else {
+    fprintf(stdout, "---> No object location.\n");
+  }
+  
+
+  return OK;
 }

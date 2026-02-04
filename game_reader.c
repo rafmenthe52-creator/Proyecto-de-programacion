@@ -1,3 +1,13 @@
+/**
+ * @brief This function reads the data in castle.dat and calls space to create a space. Later it creates a a game with that space
+ *
+ * @file game_reader.c
+ * @author Rafael Velasco-RV
+ * @version 1.0
+ * @date 04-02-2025
+ * @copyright GNU Public License
+ */
+
 #include "game_reader.h"
 
 #include <stdio.h>
@@ -47,10 +57,16 @@ Status game_reader_load_spaces(Game *game, char *filename) {
       south = atol(toks);
       toks = strtok(NULL, "|");
       west = atol(toks);
+      toks = strtok(NULL, "|");
+      if(!atol(toks)){
+        bool_object=FALSE;
+      }else(){
+        bool_object=TRUE;
+      }
       /*toks = strtok(NULL, "|");
       bool_object = atol(toks);
       toks = strtok(NULL, "|");
-      id_object = atol(toks);*/              //para futura implementación de object
+      id_object = atol(toks);*/              //para futura implementacion de object
 #ifdef DEBUG
       printf("Leido: s:%ld|%s|%ld|%ld|%ld|%ld\n", id, name, north, east, south, west);
 #endif
@@ -61,6 +77,7 @@ Status game_reader_load_spaces(Game *game, char *filename) {
         space_set_east(space, east);
         space_set_south(space, south);
         space_set_west(space, west);
+        space_set_object(space, bool_object);
         game_reader_add_space(game, space);
       }
     }
@@ -87,4 +104,4 @@ Status game_reader_add_space(Game *game, Space *space) {
 } 
 
 
-  /*En futuro añadir funcionalidad de lectura de object*/
+  /*En futuro anadir funcionalidad de lectura de object*/
