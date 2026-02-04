@@ -57,6 +57,12 @@ Status game_reader_load_spaces(Game *game, char *filename) {
       south = atol(toks);
       toks = strtok(NULL, "|");
       west = atol(toks);
+      toks = strtok(NULL, "|");
+      if(!atol(toks)){
+        bool_object=FALSE;
+      }else(){
+        bool_object=TRUE;
+      }
       /*toks = strtok(NULL, "|");
       bool_object = atol(toks);
       toks = strtok(NULL, "|");
@@ -71,6 +77,7 @@ Status game_reader_load_spaces(Game *game, char *filename) {
         space_set_east(space, east);
         space_set_south(space, south);
         space_set_west(space, west);
+        space_set_object(space, bool_object);
         game_reader_add_space(game, space);
       }
     }
