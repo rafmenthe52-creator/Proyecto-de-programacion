@@ -144,4 +144,13 @@ Status game_reader_load_objects(Game* game, char* filename){
   return status;
 }
 
-  /*En futuro anadir funcionalidad de lectura de object*/
+Status game_reader_add_object(Game* game, Object* object){
+  if(!object||(game->n_games>=MAX_GAMES)){
+    return ERROR;
+  }
+
+  game->objects[game->n_games]=object;
+  game->n_games++;
+
+  return OK;
+}
