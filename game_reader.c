@@ -103,5 +103,45 @@ Status game_reader_add_space(Game *game, Space *space) {
   return OK;
 } 
 
+Status game_reader_load_objects(Game* game, char* filename){
+  FILE *file = NULL;
+  char line[WORD_SIZE];
+  char name[WORD_SIZE];
+  char *toks = NULL;
+  Id id = NO_ID, location = NO_ID;
+  Object *object = NULL
+  Status status = OK;
+
+  if(!(filename)){
+    return ERROR;
+  }
+
+  if(!(file=fopen(filename, "r"))){
+    return ERROR;
+  }
+
+  /*get the variables separated | and copy them to temporary placeholders*/
+  while(fgets(line, WORD_SIZE, files)){
+    if(strncmp("#p:", 3, line)){
+      id=atol(strtok(line+3, "|"));
+      strcpy(name, strtok(line, "|"));
+      location=atol(strtok(line, "|"));
+    }
+  }
+
+  object=object_create(id);
+  if(object){
+    object_set_name(name);
+    object_set_location(location);
+  }
+  
+  if (ferror(file)) {
+    status = ERROR;
+  }
+
+  fclose(file);
+
+  return status;
+}
 
   /*En futuro anadir funcionalidad de lectura de object*/
