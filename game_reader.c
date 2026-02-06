@@ -62,11 +62,7 @@ Status game_reader_load_spaces(Game *game, char *filename) {
         bool_object=FALSE;
       }else(){
         bool_object=TRUE;
-      }
-      /*toks = strtok(NULL, "|");
-      bool_object = atol(toks);
-      toks = strtok(NULL, "|");
-      id_object = atol(toks);*/              //para futura implementacion de object
+      }           //para futura implementacion de object
 #ifdef DEBUG
       printf("Leido: s:%ld|%s|%ld|%ld|%ld|%ld\n", id, name, north, east, south, west);
 #endif
