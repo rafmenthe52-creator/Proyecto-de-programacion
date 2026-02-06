@@ -30,12 +30,34 @@ typedef struct _Game {
   Bool finished;
 } Game;
 
+/**
+ * @brief It creates a new Game, allocating memory for it;
+ * @author Rafael Velasco-RV
+ *
+ * @param game a pointer to a struct of type Game
+ * @return it returns the Status, either OK or ERROR
+ */
 Status game_create(Game *game);
 
 Status game_create_from_file(Game *game, char *filename);
 
+/**
+ * @brief It deletes the alocated memory and therefore deletes the struct game
+ * @author Rafael Velasco-RV
+ *
+ * @param game a pointer to struct of type Game, which intends to be deleted
+ * @return it returns the Status, either OK or ERROR
+ */
 Status game_destroy(Game *game);
 
+/**
+ * @brief This function gets game data (game and its id) and returns the struct of type space which is saved inside the struct game
+ * @author Rafael Velasco-RV
+ *
+ * @param game a pointer to struct of type Game
+ * @param id the identification number of the game
+ * @return it returns the Space that is saved inside game;
+ */
 Space *game_get_space(Game *game, Id id);
 
 Id game_get_player_location(Game *game);
