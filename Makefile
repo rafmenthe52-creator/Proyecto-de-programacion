@@ -1,3 +1,2 @@
-all: castle
-
-castle:
+comp:
+	gcc -o castle *.c -lscreen -L.
