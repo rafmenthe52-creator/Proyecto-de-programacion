@@ -13,6 +13,8 @@
 
 #include "command.h"
 #include "space.h"
+#include "object.h"
+#include "player.h"
 #include "types.h"
 #include "object.h"
 
