@@ -98,8 +98,23 @@ Status player_set_object(Player* player, Bool value);
  */
 Bool player_get_object(Player* player);
 
-
+/**
+* @brief It gets the player inventory
+* @author Adrian Covarrubias-AC
+* 
+* @param player a pointer to the player
+* @return OK, if everything goes well or ERROR if there was some mistake
+*/
 Status player_set_objects(Player* player, Id id);
+
+/**
+* @brief It gets the player inventory
+* @author Adrian Covarrubias-AC 
+* 
+* @param player a pointer to the player
+* @return the players inventory
+*/
+Id player_get_objects(Player* player);
 
 /**
  * @brief It prints the player information
