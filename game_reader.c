@@ -17,9 +17,7 @@
    Private functions
 */
 
-Status game_load_spaces(Game *game, char *filename);
-
-Status game_add_space(Game *game, Space *space);
+Status game_reader_load_spaces(Game *game, char *filename);
 
 /**
    Implementation of public functions
@@ -74,7 +72,7 @@ Status game_reader_load_spaces(Game *game, char *filename) {
         space_set_south(space, south);
         space_set_west(space, west);
         space_set_object(space, bool_object);
-        game_reader_add_space(game, space);
+        game_add_space(game, space);
       }
     }
   }

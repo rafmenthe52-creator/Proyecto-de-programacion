@@ -16,7 +16,6 @@
 #include "object.h"
 #include "player.h"
 #include "types.h"
-#include "object.h"
 
 #define MAX_SPACES 100
 #define MAX_OBJECTS 1
@@ -78,5 +77,11 @@ Bool game_get_finished(Game *game);
 Status game_set_finished(Game *game, Bool finished);
 
 void game_print(Game *game);
+
+Status game_add_space(Game *game, Space *space);
+
+Status game_add_object(Game *game, Object *object);
+
+Status game_add_player(Game *game, player *player);
 
 #endif
