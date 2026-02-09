@@ -28,7 +28,7 @@ Player* player_create(Id id) {
   /* Error control */
   if (id == NO_ID) return NULL;
 
-  newPlayer = (Player*)calloc(1, sizeof(Player));
+  newPlayer = (Player*)malloc(1*sizeof(Player));
   if (newPlayer == NULL) {
     return NULL;
   }
