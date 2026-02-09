@@ -38,7 +38,7 @@ Space* space_create(Id id) {
   /* Error control */
   if (id == NO_ID) return NULL;
 
-  newSpace = (Space*)calloc(1, sizeof(Space));
+  newSpace = (Space*)malloc(1*sizeof(Space));
   if (newSpace == NULL) {
     return NULL;
   }

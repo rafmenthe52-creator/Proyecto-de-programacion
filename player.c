@@ -12,13 +12,13 @@
  */
 struct _Player {
   Id id;                    /*!< Id number of the space, it must be unique */
-  char name[WORD_SIZE + 1]; /*!< Name of the space */
-  id location;              /*!< Id of the space where the player is located*/
-  Bool object;              /*!< Whether the space has an object or not */
+  char name[WORD_SIZE + 1]; /*!< Name of the player */
+  id location;
+  Bool object;              /*!< Whether the player has an object or not */
   id objects[MAX_OBJECTS];
 };
 
-/** space_create allocates memory for a new space
+/** player_create allocates memory for a new player
  *  and initializes its members
  */
 Player* player_create(Id id) {
@@ -32,7 +32,7 @@ Player* player_create(Id id) {
     return NULL;
   }
 
-  /* Initialization of an empty space*/
+  /* Initialization of an empty player*/
   newPlayer->id = id;
   newPlayer->name[0] = '\0';
   newPlayer->location;
@@ -78,12 +78,19 @@ const char* player_get_name(Player* player) {
   return player->name;
 }
 
-Status player_set_location(Player* player, Id id) {
+Status player_set_player_location(Player* player, Id id) {
   if (!player || id == NO_ID) {
     return ERROR;
   }
   player->location = id;
   return OK;
+}
+
+Id player_get_player_location(Player* player){
+  if(!player){
+    return NO_ID;
+  }
+  return player->location;
 }
 
 Status player_set_object(Player* player, Bool value) {
@@ -109,11 +116,11 @@ Status player_print(Player* player) {
     return ERROR;
   }
 
-  /* 1. Print the id and the name of the space */
+  /* 1. Print the id and the name of the player */
   fprintf(stdout, "--> Player (Id: %ld; Name: %s)\n", player->id, player->name);
 
   /* 2. For each direction, print its link */
-  idaux = player_get_location(player);
+  idaux = player_get_player_location(player);
   if(idaux 1= NO_ID){
     fprintf(stdout, "Location id is: %ld",idaux )
   }else{

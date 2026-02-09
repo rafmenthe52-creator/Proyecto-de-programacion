@@ -148,6 +148,8 @@ Id space_get_west(Space* space);
  */
 Status space_set_object(Space* space, Bool value);
 
+
+
 /**
  * @brief It gets whether the space has an object or not
  * @author Adrian Covarrubias-AC
