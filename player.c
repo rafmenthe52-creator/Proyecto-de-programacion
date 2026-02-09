@@ -15,8 +15,8 @@ struct _Player {
   char name[WORD_SIZE + 1]; /*!< Name of the player */
   id location;
   Bool object;              /*!< Whether the player has an object or not */
-  id objects[MAX_OBJECTS];
-  int n_objects_player;
+  id objects[MAX_OBJECTS];  /*!< The objects the player carries (Early Inventory)*/
+  int n_objects_player;     /*!< The number of objects the the player carries in its "inventory"*/
 };
 
 /** player_create allocates memory for a new player
@@ -119,12 +119,12 @@ Status player_set_objects(Player* player, Id id){
   return OK; 
 }
 
-Id player_get_objects(Player* player){
+*Id player_get_objects(Player* player){
   if(!player){
     return NO_ID;
   }
 
-  return player->objects[n_objects_player-1];
+  return player->objects;
 }
 
 Status player_print(Player* player) {

@@ -22,4 +22,6 @@ typedef enum { ERROR, OK } Status;
 
 typedef enum { N, S, E, W } Direction;
 
+typedef enum { SPACE, PLAYER }  Location_Type
+
 #endif
