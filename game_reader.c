@@ -62,11 +62,7 @@ Status game_reader_load_spaces(Game *game, char *filename) {
         bool_object=FALSE;
       }else(){
         bool_object=TRUE;
-      }
-      /*toks = strtok(NULL, "|");
-      bool_object = atol(toks);
-      toks = strtok(NULL, "|");
-      id_object = atol(toks);*/              //para futura implementacion de object
+      }           //para futura implementacion de object
 #ifdef DEBUG
       printf("Leido: s:%ld|%s|%ld|%ld|%ld|%ld\n", id, name, north, east, south, west);
 #endif
@@ -103,5 +99,54 @@ Status game_reader_add_space(Game *game, Space *space) {
   return OK;
 } 
 
+Status game_reader_load_objects(Game* game, char* filename){
+  FILE *file = NULL;
+  char line[WORD_SIZE];
+  char name[WORD_SIZE];
+  char *toks = NULL;
+  Id id = NO_ID, location = NO_ID;
+  Object *object = NULL
+  Status status = OK;
 
-  /*En futuro anadir funcionalidad de lectura de object*/
+  if(!(filename)){
+    return ERROR;
+  }
+
+  if(!(file=fopen(filename, "r"))){
+    return ERROR;
+  }
+
+  /*get the variables separated | and copy them to temporary placeholders*/
+  while(fgets(line, WORD_SIZE, files)){
+    if(strncmp("#p:", 3, line)){
+      id=atol(strtok(line+3, "|"));
+      strcpy(name, strtok(line, "|"));
+      location=atol(strtok(line, "|"));
+    }
+  }
+
+  object=object_create(id);
+  if(object){
+    object_set_name(name);
+    object_set_location(location);
+  }
+  
+  if (ferror(file)) {
+    status = ERROR;
+  }
+
+  fclose(file);
+
+  return status;
+}
+
+Status game_reader_add_object(Game* game, Object* object){
+  if(!object||(game->n_games>=MAX_GAMES)){
+    return ERROR;
+  }
+
+  game->objects[game->n_games]=object;
+  game->n_games++;
+
+  return OK;
+}
