@@ -2,7 +2,7 @@
  * @brief It defines the command interpreter interface
  *
  * @file command.h
- * @author Profesores PPROG
+ * @author Adrian Covarrubias-AC
  * @version 0
  * @date 27-01-2025
  * @copyright GNU Public License
@@ -18,7 +18,7 @@
 
 typedef enum { CMDS, CMDL } CommandType;
 
-typedef enum { NO_CMD = -1, UNKNOWN, EXIT, NEXT, BACK } CommandCode;
+typedef enum { NO_CMD = -1, UNKNOWN, EXIT, NEXT, BACK, TAKE, DROP} CommandCode;
 
 typedef struct _Command Command;
 
