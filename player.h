@@ -98,6 +98,9 @@ Status player_set_object(Player* player, Bool value);
  */
 Bool player_get_object(Player* player);
 
+
+Status player_set_objects(Player* player, Id id);
+
 /**
  * @brief It prints the player information
  * @author Adrian Covarrubias-AC

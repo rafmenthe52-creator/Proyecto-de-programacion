@@ -16,6 +16,7 @@ struct _Player {
   id location;
   Bool object;              /*!< Whether the player has an object or not */
   id objects[MAX_OBJECTS];
+  int n_objects_player;
 };
 
 /** player_create allocates memory for a new player
@@ -108,6 +109,24 @@ Bool player_get_object(Player* player) {
   return player->object;
 }
 
+Status player_set_objects(Player* player, Id id){
+  if(!player || id == NO_ID){
+    return ERROR;
+  }
+  player->objects[n_objects_player] = id;
+  n_objects_player++; 
+
+  return OK; 
+}
+
+Id player_get_objects(Player* player){
+  if(!player){
+    return NO_ID;
+  }
+
+  return player->objects[n_objects_player-1];
+}
+
 Status player_print(Player* player) {
   Id idaux = NO_ID;
 
@@ -119,7 +138,7 @@ Status player_print(Player* player) {
   /* 1. Print the id and the name of the player */
   fprintf(stdout, "--> Player (Id: %ld; Name: %s)\n", player->id, player->name);
 
-  /* 2. For each direction, print its link */
+  /* 2. Print the location of the player */
   idaux = player_get_player_location(player);
   if(idaux 1= NO_ID){
     fprintf(stdout, "Location id is: %ld",idaux )
@@ -127,7 +146,7 @@ Status player_print(Player* player) {
     fprintf(stdout, "No location id found", idaux)
   }
 
-  /* 3. Print if there is an object in the space or not */
+  /* 3. Print if the player has an object or not */
   if (player_get_object(player)) {
     fprintf(stdout, "---> Player have the object.\n");
   } else {
