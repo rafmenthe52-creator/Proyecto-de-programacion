@@ -84,7 +84,7 @@ Id player_get_player_location(Player* player);
  * @author Adrian Covarrubias-AC
  *
  * @param player a pointer to the player
- * @param value a boolean, specifying if in the space there is an object (TRUE) or not (FALSE)
+ * @param value a boolean, specifying if the player carries an object (TRUE) or not (FALSE)
  * @return OK, if everything goes well or ERROR if there was some mistake
  */
 Status player_set_object(Player* player, Bool value);
@@ -94,7 +94,7 @@ Status player_set_object(Player* player, Bool value);
  * @author Adrian Covarrubias-AC
  *
  * @param player a pointer to the player
- * @return a boolean, specifying if in the space there is an object (TRUE) or not (FALSE)
+ * @return a boolean, specifying if the player carries an object (TRUE) or not (FALSE)
  */
 Bool player_get_object(Player* player);
 
