@@ -86,7 +86,7 @@ Status game_reader_load_spaces(Game *game, char *filename) {
   return status;
 }
 
-Status game_reader_add_space(Game *game, Space *space) {
+Status game_add_space(Game *game, Space *space) {
   if ((space == NULL) || (game->n_spaces >= MAX_SPACES)) {
     return ERROR;
   }
@@ -138,7 +138,7 @@ Status game_reader_load_objects(Game* game, char* filename){
   return status;
 }
 
-Status game_reader_add_object(Game* game, Object* object){
+Status game_add_object(Game* game, Object* object){
   if(!object||(game->n_games>=MAX_GAMES)){
     return ERROR;
   }
