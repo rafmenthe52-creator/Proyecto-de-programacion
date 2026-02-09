@@ -29,3 +29,6 @@ player.o: player.c
 
 space.o: space.c 
 	gcc -Wall -ansi -pedantic-c space.c 
+
+
+	**falta incluir todos los .h que se usan 

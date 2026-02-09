@@ -150,3 +150,9 @@ Status game_reader_add_object(Game* game, Object* object){
 
   return OK;
 }
+
+game_reader_load_player(Game* game, char* filename){
+  FILE *file=NULL;
+  char line[WORD_SIZE];
+  char name[WORD_SIZE];
+}

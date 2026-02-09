@@ -23,7 +23,6 @@
 
 typedef struct _Game {
   Id player_location;
-  Object *objects[MAX_OBJECTS]
   Space *spaces[MAX_SPACES];
   int n_spaces;
   Object *objects[MAX_OBJECTS];

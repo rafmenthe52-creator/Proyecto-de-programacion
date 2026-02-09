@@ -13,7 +13,7 @@
 struct _Player {
   Id id;                    /*!< Id number of the space, it must be unique */
   char name[WORD_SIZE + 1]; /*!< Name of the space */
-  id location;
+  id location;              /*!< Id of the space where the player is located*/
   Bool object;              /*!< Whether the space has an object or not */
   id objects[MAX_OBJECTS];
 };
@@ -84,13 +84,6 @@ Status player_set_location(Player* player, Id id) {
   }
   player->location = id;
   return OK;
-}
-
-Id player_get_north(Player* player) {
-  if (!player) {
-    return NO_ID;
-  }
-  return player->location;
 }
 
 Status player_set_object(Player* player, Bool value) {
