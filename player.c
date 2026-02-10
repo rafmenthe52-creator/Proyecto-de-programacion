@@ -126,7 +126,8 @@ Status player_set_objects(Player* player, Id id){
     return NO_ID;
   }
 
-  return player->objects;
+  player->n_objects_player--;
+  return player->objects[(player->n_objects_player)+1];
 }
 
 int player_get_n_objects(Player* player){
