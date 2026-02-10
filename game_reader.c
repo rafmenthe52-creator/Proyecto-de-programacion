@@ -137,7 +137,6 @@ Status game_reader_load_player(Game* game, char* filename){
   char name[WORD_SIZE];
   char *toks = NULL;      /*Tokens separated by strtok*/
   Id id = NO_ID, location = NO_ID;
-  Bool object;
   id objects;
   Status = OK;
 
@@ -167,7 +166,6 @@ Status game_reader_load_player(Game* game, char* filename){
   }else{
     player_set_name(name , player);
     player_set_player_location(location , player);
-    player_set_object(object , player);
     player_set_objects(objects , player);
     status==game_add_player(player))
   }

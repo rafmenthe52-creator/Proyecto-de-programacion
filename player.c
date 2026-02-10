@@ -14,9 +14,8 @@ struct _Player {
   Id id;                    /*!< Id number of the space, it must be unique */
   char name[WORD_SIZE + 1]; /*!< Name of the player */
   id location;
-  Bool object;              /*!< Whether the player has an object or not */
-  id objects[MAX_OBJECTS];  /*!< The id's of the objects the player carries*/
   int n_objects_player;     /*!< The number of objects the the player carries in its "inventory"*/
+  id objects[MAX_OBJECTS];  /*!< The id's of the objects the player carries*/
 };
 
 /** player_create allocates memory for a new player
@@ -37,7 +36,6 @@ Player* player_create(Id id) {
   newPlayer->id = id;
   newPlayer->name[0] = '\0';
   newPlayer->location;
-  newPlayer->object = FALSE;
   for(i=0, i<MAX_OBJECTS, i++){
     newPlayer->objects[i] =NO_ID;
   }
@@ -94,21 +92,6 @@ Id player_get_player_location(Player* player){
     return NO_ID;
   }
   return player->location;
-}
-
-Status player_set_object(Player* player, Bool value) {
-  if (!player) {
-    return ERROR;
-  }
-  player->object = value;
-  return OK;
-}
-
-Bool player_get_object(Player* player) {
-  if (!player) {
-    return FALSE;
-  }
-  return player->object;
 }
 
 Status player_set_objects(Player* player, Id id){
