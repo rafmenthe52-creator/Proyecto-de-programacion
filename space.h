@@ -159,6 +159,7 @@ Status space_set_object(Space* space, Bool value);
  */
 Bool space_get_object(Space* space);
 
+Id space_get_objects(Space* space);
 /**
  * @brief It prints the space information
  * @author Adrian Covarrubias-AC
@@ -168,5 +169,7 @@ Bool space_get_object(Space* space);
  * @return OK, if everything goes well or ERROR if there was some mistake
  */
 Status space_print(Space* space);
+
+
 
 #endif
