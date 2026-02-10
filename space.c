@@ -27,7 +27,7 @@ struct _Space {
   Id east;                  /*!< Id of the space at the east */
   Id west;                  /*!< Id of the space at the west */
   Bool object;              /*!< Whether the space has an object or not */
-  id objects[MAX_OBJECTS]
+  Id object_id;             /*!< Id of the object in the space, if any */
 };
 
 /** space_create allocates memory for a new space
@@ -52,6 +52,7 @@ Space* space_create(Id id) {
   newSpace->east = NO_ID;
   newSpace->west = NO_ID;
   newSpace->object = FALSE;
+  newSpace->object_id = NO_ID;
 
   return newSpace;
 }
@@ -170,7 +171,8 @@ Status space_set_objects(Space* space, Id id){
     return ERROR;
   }
 
-  space->objects = id;
+  space->object_id = id;
+  space->object = TRUE;
   return OK;
 }
 
@@ -178,7 +180,7 @@ Id space_get_objects(Space* space){
   if(!space){
     return NO_ID;
   }
-  return space->objects;
+  return space->object_id;
 }
 
 Status space_delete_object(Space* space){
@@ -186,7 +188,8 @@ Status space_delete_object(Space* space){
     return ERROR;
   }
 
-  space->object=NO_ID;
+  space->object_id = NO_ID;
+  space->object = FALSE;
 
   return OK;
 }

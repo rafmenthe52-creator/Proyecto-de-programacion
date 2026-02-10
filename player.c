@@ -13,8 +13,8 @@
 struct _Player {
   Id id;                    /*!< Id number of the space, it must be unique */
   char name[WORD_SIZE + 1]; /*!< Name of the player */
-  id location;
-  id objects[MAX_OBJECTS];  /*!< The id's of the objects the player carries*/
+  Id location;
+  Id objects[MAX_OBJECTS];  /*!< The id's of the objects the player carries*/
   int n_objects_player;     /*!< The number of objects the the player carries in its "inventory"*/
 };
 
@@ -33,11 +33,12 @@ Player* player_create(Id id) {
   }
 
   /* Initialization of an empty player*/
+  int i = 0;
   newPlayer->id = id;
   newPlayer->name[0] = '\0';
-  newPlayer->location;
-  for(i=0, i<MAX_OBJECTS, i++){
-    newPlayer->objects[i] =NO_ID;
+  newPlayer->location = NO_ID;
+  for(i = 0; i < MAX_OBJECTS; i++){
+    newPlayer->objects[i] = NO_ID;
   }
   newPlayer->n_objects_player = 0;
   
@@ -97,15 +98,27 @@ Id player_get_player_location(Player* player){
 Status player_set_objects(Player* player, Id id){
   if(!player || id == NO_ID){
     return ERROR;
+  }if(player->n_objects_player >= MAX_OBJECTS){
+    return ERROR;
   }
-  player->objects[n_objects_player] = id;
-  n_objects_player++; 
+  player->objects[player->n_objects_player] = id;
+  
+  player->n_objects_player++; 
 
   return OK; 
-}
+} 
+
 
 Id player_get_objects(Player* player){
-  if(!player||player->n_objects_player){
+  if(!player||player->n_objects_player<=0){
+    return NO_ID;
+  }
+
+  player->n_objects_player--;
+  return player->objects[(player->n_objects_player)+1];
+}
+
+  || player->n_objects_player == 0){
     return NO_ID;
   }
 
@@ -134,17 +147,17 @@ Status player_print(Player* player) {
 
   /* 2. Print the location of the player */
   idaux = player_get_player_location(player);
-  if(idaux == NO_ID){
+  if(idaux =! NO_ID){
     fprintf(stdout, "Location id is: %ld",idaux )
   }else{
     fprintf(stdout, "No location id found", idaux)
   }
 
-  /* 3. Print if the player has an object or not */
-  if (player_get_object(player)) {
-    fprintf(stdout, "---> Player have an object.\n");
-  } else {
-    fprintf(stdout, "---> Player not have an object.\n");
+  /* 3. Print if the player has any objects or not */
+  if (player_get_n_objects(player) > 0) {
+    fprintf(stdout, "---> Player have object(s).\n");
+  }else {
+    fprintf(stdout, "---> Player has no objects")
   }
 
   return OK;

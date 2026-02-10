@@ -10,9 +10,9 @@
  * This struct stores all the information of an object
  */
 
-struct Object {
+struct _Object {
   Id id;                    /*!< Id number of the object, it must be unique */
-  char name[WORD_SIZE + 1]; /*!< Name of the space */
+  char name[WORD_SIZE + 1]; /*!< Name of the object */
   Id object_location;       /*!< Id of the space the object is located at*/
 };
 
@@ -64,10 +64,10 @@ Id object_get_id(Object* object){
   return object->id;
 }
 
-Status object_set_name(Object* object; char* name){
+Status object_set_name(Object* object, char* name){
   /*Checks for content*/
-  if(!object|!name){
-    return ERROR
+  if(!object || !name){
+    return ERROR;
   }
 
   /*copies the input name to the variable name in the struct object*/
@@ -89,12 +89,12 @@ char* object_get_name(Object* object){
 
 Status object_set_location(Object* object, Id id){
   /*Checks for content*/
-  if (!object||!id){
+  if (!object || id == NO_ID){
     return ERROR;
   }
 
   /*sets the object location to the given id*/
-  object->object_location = id;   
+  object->object_location = id;  
 
   return OK;
 }
@@ -117,7 +117,7 @@ Status object_print(Object* object) {
   }
 
   /* 1. Print the id and the name of the object */
-  fprintf(stdout, "--> object (Id: %ld; Name: %s)\n", object->id, object->name);
+  fprintf(stdout, "--> Object (Id: %ld; Name: %s)\n", object->id, object->name);
 
   /* 2. Print the objects location */
   idaux = object_get_location(object);

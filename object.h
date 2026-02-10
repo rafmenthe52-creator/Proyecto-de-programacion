@@ -39,7 +39,7 @@ Status object_destroy(Object* object);
  * @param object a pointer to the allocated memory where the object is located
  * @return it returns the either NO_ID or the id saved in the object data structure 
  */
-Id object_get_id(Object* object)
+Id object_get_id(Object* object);
 
 /**
  * @brief The funtion acceses the data structure and sets the value of the name to the one given in the parameter name
@@ -49,7 +49,7 @@ Id object_get_id(Object* object)
  * @param name a string which contains the name which is intended to be copied to the objects structure
  * @return it returns the Status, either OK or ERROR
  */
-Status object_set_name(Object* object; char* name);
+Status object_set_name(Object* object, char* name);
 
 /**
  * @brief The function acceses the data structure to return the name of the object

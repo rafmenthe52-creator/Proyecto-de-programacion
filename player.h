@@ -40,7 +40,7 @@ Status player_destroy(Player* player);
  * @param player a pointer to the player
  * @return the id of player
  */
-Id place_get_id(Player* player);
+Id player_get_id(Player* player);
 
 /**
  * @brief It sets the name of a player
@@ -80,23 +80,13 @@ Status player_set_player_location(Player* player, Id id);
 Id player_get_player_location(Player* player);
 
 /**
- * @brief It sets whether the player has an object or not
+ * @brief It gets the number of objects the player carries
  * @author Adrian Covarrubias-AC
- *
+ * 
  * @param player a pointer to the player
- * @param value a boolean, specifying if the player carries an object (TRUE) or not (FALSE)
- * @return OK, if everything goes well or ERROR if there was some mistake
+ * @return the number of objects in the player's inventory
  */
-Status player_set_object(Player* player, Bool value);
-
-/**
- * @brief It gets whether the player has an object or not
- * @author Adrian Covarrubias-AC
- *
- * @param player a pointer to the player
- * @return a boolean, specifying if the player carries an object (TRUE) or not (FALSE)
- */
-Bool player_get_object(Player* player);
+int player_get_n_objects(Player* player);
 
 /**
 * @brief It gets the player inventory

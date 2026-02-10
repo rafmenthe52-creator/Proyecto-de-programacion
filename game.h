@@ -22,12 +22,11 @@
 #define MAX_PLAYER 1
 
 typedef struct _Game {
-  Id player_location;
+  Player *player;
   Space *spaces[MAX_SPACES];
   int n_spaces;
   Object *objects[MAX_OBJECTS];
-  int n_games;
-  player *player;
+  int n_objects;
   Command *last_cmd;
   Bool finished;
 } Game;
@@ -61,6 +60,25 @@ Status game_destroy(Game *game);
  * @return it returns the Space that is saved inside game;
  */
 Space *game_get_space(Game *game, Id id);
+
+/**
+ * @brief It gets the player from the game
+ * @author Rafael Velasco-RV
+ *
+ * @param game a pointer to struct of type Game
+ * @return the Player pointer stored in the game
+ */
+Player* game_get_player(Game *game);
+
+/**
+ * @brief It gets an object from the game by its id
+ * @author Rafael Velasco-RV
+ *
+ * @param game a pointer to struct of type Game
+ * @param id the identification number of the object
+ * @return the Object pointer with the specified id, or NULL if not found
+ */
+Object* game_get_object(Game *game, Id id);
 
 Id game_get_player_location(Game *game);
 
