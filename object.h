@@ -88,4 +88,4 @@ Id object_get_location(Object* object);
  */
 Status object_print(Object* object);
 
-#endif
+#endif 
