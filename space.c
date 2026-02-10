@@ -27,6 +27,7 @@ struct _Space {
   Id east;                  /*!< Id of the space at the east */
   Id west;                  /*!< Id of the space at the west */
   Bool object;              /*!< Whether the space has an object or not */
+  id objects[MAX_OBJECTS]
 };
 
 /** space_create allocates memory for a new space

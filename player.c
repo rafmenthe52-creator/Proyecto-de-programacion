@@ -15,7 +15,7 @@ struct _Player {
   char name[WORD_SIZE + 1]; /*!< Name of the player */
   id location;
   Bool object;              /*!< Whether the player has an object or not */
-  id objects[MAX_OBJECTS];  /*!< The objects the player carries (Early Inventory)*/
+  id objects[MAX_OBJECTS];  /*!< The id's of the objects the player carries*/
   int n_objects_player;     /*!< The number of objects the the player carries in its "inventory"*/
 };
 

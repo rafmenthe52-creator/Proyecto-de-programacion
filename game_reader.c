@@ -116,7 +116,7 @@ Status game_reader_load_objects(Game* game, char* filename){
 
   /*get the variables separated | and copy them to temporary placeholders*/
   while(fgets(line, WORD_SIZE, files)){
-    if(strncmp("#p:", 3, line)){
+    if(strncmp("#o:", 3, line)){
       id=atol(strtok(line+3, "|"));
       strcpy(name, strtok(line, "|"));
       location=atol(strtok(line, "|"));
@@ -149,8 +149,51 @@ Status game_add_object(Game* game, Object* object){
   return OK;
 }
 
-game_reader_load_player(Game* game, char* filename){
-  FILE *file=NULL;
+Status game_reader_load_player(Game* game, char* filename){
+  FILE *file = NULL;
   char line[WORD_SIZE];
   char name[WORD_SIZE];
+  char *toks = NULL;      /*Tokens separated by strtok*/
+  Id id = NO_ID, location = NO_ID;
+  Bool object;
+  id objects;
+  Status = OK;
+
+  /*Checking if filename is not NULL*/
+  if(!(filename)){
+    return ERROR
+  }
+
+  /*Opening the data file in read mode and checking for errors*/
+  if(!(file=fopen(filename , "r"))){
+    return ERROR
+  }
+
+  /*Look for #p: which indicates the data is of type player*/
+  while(fgets(line, WORD_SIZE, files)){
+    if(strncmp("#:", 3 , line)){
+      id = atol(strtok(line+3 , "|"));
+      strcpy(name , strtok(line , "|"));
+      location = atol(strtok(line , "|"));
+      object = atol(strtok(line , "|"));
+      objects = atol(strtok(line , "|"));
+    }
+  }  
+
+  if(!player=player_create(id)){
+    return ERROR;
+  }else{
+    player_set_name(name);
+    player_set_player_location(location);
+    player_set_object(object);
+    player_set_objects(objects);
+  }
+  
+  if(ferror(file)){
+    status = ERROR;
+  }
+
+  fclose(file);
+
+  return status;
 }

@@ -35,7 +35,7 @@ Object* object_create(Id id) {
     return NULL;
   }
 
-  /* Initialization of an empty space*/
+  /* Initialization of an empty object*/
   newObject->id = id;
   newObject->name[0] = '\0';
   newObject->object_location=NO_ID
@@ -85,7 +85,7 @@ Status object_set_location(Object* object, Id id){
     return ERROR;
   }
 
-  if(!(object->object_location=id)){        /*copies id of the location to the struct object and insidew the struct into object_location*/  
+  if(!(object->object_location=id)){        /*copies id of the location to the struct object and inside the struct into object_location*/  
     return ERROR;
   }
 
