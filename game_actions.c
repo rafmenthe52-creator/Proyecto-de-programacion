@@ -90,9 +90,7 @@ void game_actions_next(Game *game) {
   space_id = game_get_player_location(game);
   if (space_id == NO_ID) {
     return;
-  }    if(current_id != NO_ID){
-      game->player->n_objects_player++;
-  }
+  }    
 
   current_id = space_get_south(game_get_space(game, space_id));
   if (current_id != NO_ID) {
@@ -127,10 +125,23 @@ void game_actions_take(Game *game){
     return;
   }
 
-  current_id=(space_get_object(game->space))
+  if(NO_ID==(current_id=(space_get_objects(game->space))));
 
   player_set_objects(game->player , current_id);  
 
   return
+}
+
+void game_actions_drop(Game *game){
+  Id current_id = NO_ID;
+
+  if(player_get_n_objects(game->player)==0){
+    return;
+  }
+
+  current_id=player_get_objects(game->player);
+
+  space_set_objects(game->space , current_id);
+
 }
 

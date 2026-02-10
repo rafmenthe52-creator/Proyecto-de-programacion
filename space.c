@@ -165,9 +165,21 @@ Bool space_get_object(Space* space) {
   return space->object;
 }
 
-Status 
+Status space_set_objects(Space* space, Id id){
+  if(!space || id == NO_ID){
+    return ERROR;
+  }
 
+  space->objects = id;
+  return OK;
+}
 
+Id space_get_objects(Space* space){
+  if(!space){
+    return NO_ID
+  }
+  return space->objects;
+}
 
 Status space_print(Space* space) {
   Id idaux = NO_ID;
