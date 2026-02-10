@@ -165,6 +165,10 @@ Bool space_get_object(Space* space) {
   return space->object;
 }
 
+Status 
+
+
+
 Status space_print(Space* space) {
   Id idaux = NO_ID;
 
