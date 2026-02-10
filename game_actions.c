@@ -9,6 +9,7 @@
  */
 
 #include "game_actions.h"
+#include "player.h"
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -25,6 +26,10 @@ void game_actions_exit(Game *game);
 void game_actions_next(Game *game);
 
 void game_actions_back(Game *game);
+
+void game_actions_take(Game *game, Player *player);
+
+void game_actions_drop(Game *game, Player *player);
 
 /**
    Game actions implementation
@@ -46,12 +51,20 @@ Status game_actions_update(Game *game, Command *command) {
       game_actions_exit(game);
       break;
 
-    case NEXT:
+    case NEXT:DROP
       game_actions_next(game);
       break;
 
     case BACK:
       game_actions_back(game);
+      break;
+
+    case TAKE:
+      game_actions_take(game);
+      break;
+
+    case DROP:
+      game_actions_drop(game);
       break;
 
     default:
@@ -103,3 +116,20 @@ void game_actions_back(Game *game) {
 
   return;
 }
+
+void game_actions_take(Game *game, Player *player){
+  Id current_id = NO_ID;
+
+  if(player_get_n_objects(player)>=1){
+    return;
+  }
+
+  current_id=(space_get_object)
+
+  current_id = player_get_objects();
+    if(current_id != NO_ID){
+      game->player->n_objects_player++;
+  }
+  return
+}
+

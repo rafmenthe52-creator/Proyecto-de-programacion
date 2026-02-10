@@ -41,6 +41,8 @@ Player* player_create(Id id) {
   for(i=0, i<MAX_OBJECTS, i++){
     newPlayer->objects[i] =NO_ID;
   }
+  newPlayer->n_objects_player = 0;
+  
   
   return newPlayer;
 }
@@ -127,6 +129,14 @@ Status player_set_objects(Player* player, Id id){
   return player->objects;
 }
 
+int player_get_n_objects(Player* player){
+  if(!player){
+    return 0;
+  }
+
+  return player->n_objects_player;
+}
+
 Status player_print(Player* player) {
   Id idaux = NO_ID;
 
@@ -140,7 +150,7 @@ Status player_print(Player* player) {
 
   /* 2. Print the location of the player */
   idaux = player_get_player_location(player);
-  if(idaux 1= NO_ID){
+  if(idaux == NO_ID){
     fprintf(stdout, "Location id is: %ld",idaux )
   }else{
     fprintf(stdout, "No location id found", idaux)
@@ -148,9 +158,9 @@ Status player_print(Player* player) {
 
   /* 3. Print if the player has an object or not */
   if (player_get_object(player)) {
-    fprintf(stdout, "---> Player have the object.\n");
+    fprintf(stdout, "---> Player have an object.\n");
   } else {
-    fprintf(stdout, "---> Player not have the object.\n");
+    fprintf(stdout, "---> Player not have an object.\n");
   }
 
   return OK;

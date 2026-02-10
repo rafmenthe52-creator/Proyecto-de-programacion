@@ -19,6 +19,7 @@
 
 #define MAX_SPACES 100
 #define MAX_OBJECTS 1
+#define MAX_PLAYER 1
 
 typedef struct _Game {
   Id player_location;
@@ -26,6 +27,8 @@ typedef struct _Game {
   int n_spaces;
   Object *objects[MAX_OBJECTS];
   int n_games;
+  player *player[MAX_PLAYER];
+  int n_player; 
   Command *last_cmd;
   Bool finished;
 } Game;
