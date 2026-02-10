@@ -14,8 +14,8 @@ struct _Player {
   Id id;                    /*!< Id number of the space, it must be unique */
   char name[WORD_SIZE + 1]; /*!< Name of the player */
   id location;
-  int n_objects_player;     /*!< The number of objects the the player carries in its "inventory"*/
   id objects[MAX_OBJECTS];  /*!< The id's of the objects the player carries*/
+  int n_objects_player;     /*!< The number of objects the the player carries in its "inventory"*/
 };
 
 /** player_create allocates memory for a new player
