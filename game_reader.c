@@ -65,14 +65,16 @@ Status game_reader_load_spaces(Game *game, char *filename) {
       printf("Leido: s:%ld|%s|%ld|%ld|%ld|%ld\n", id, name, north, east, south, west);
 #endif
       space = space_create(id);
-      if (space != NULL) {
+      if (!space_create(id)) {
+        return ERROR;
+      }else{  
         space_set_name(space, name);
         space_set_north(space, north);
         space_set_east(space, east);
         space_set_south(space, south);
         space_set_west(space, west);
         space_set_object(space, bool_object);
-        game_add_space(game, space);
+        status=game_add_space(game, space);
       }
     }
   }
@@ -123,12 +125,14 @@ Status game_reader_load_objects(Game* game, char* filename){
     }
   }
 
-  object=object_create(id);
-  if(object){
+  if(!object=object_create(id)){
+    return ERROR;
+  }else{
     object_set_name(name);
     object_set_location(location);
+    status=game_add_object(game, object)
   }
-  
+
   if (ferror(file)) {
     status = ERROR;
   }
@@ -136,17 +140,6 @@ Status game_reader_load_objects(Game* game, char* filename){
   fclose(file);
 
   return status;
-}
-
-Status game_add_object(Game* game, Object* object){
-  if(!object||(game->n_games>=MAX_GAMES)){
-    return ERROR;
-  }
-
-  game->objects[game->n_games]=object;
-  game->n_games++;
-
-  return OK;
 }
 
 Status game_reader_load_player(Game* game, char* filename){
@@ -183,10 +176,11 @@ Status game_reader_load_player(Game* game, char* filename){
   if(!player=player_create(id)){
     return ERROR;
   }else{
-    player_set_name(name);
-    player_set_player_location(location);
-    player_set_object(object);
-    player_set_objects(objects);
+    player_set_name(name , player);
+    player_set_player_location(location , player);
+    player_set_object(object , player);
+    player_set_objects(objects , player);
+    status==game_add_player(player))
   }
   
   if(ferror(file)){

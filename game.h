@@ -27,8 +27,7 @@ typedef struct _Game {
   int n_spaces;
   Object *objects[MAX_OBJECTS];
   int n_games;
-  player *player[MAX_PLAYER];
-  int n_player; 
+  player *player;
   Command *last_cmd;
   Bool finished;
 } Game;

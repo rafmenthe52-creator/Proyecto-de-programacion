@@ -176,9 +176,19 @@ Status space_set_objects(Space* space, Id id){
 
 Id space_get_objects(Space* space){
   if(!space){
-    return NO_ID
+    return NO_ID;
   }
   return space->objects;
+}
+
+Status space_delete_object(Space* space){
+  if(!space){
+    return ERROR;
+  }
+
+  space->object=NO_ID;
+
+  return OK;
 }
 
 Status space_print(Space* space) {

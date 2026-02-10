@@ -122,7 +122,7 @@ Status player_set_objects(Player* player, Id id){
 }
 
 Id player_get_objects(Player* player){
-  if(!player){
+  if(!player||player->n_objects_player){
     return NO_ID;
   }
 

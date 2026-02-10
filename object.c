@@ -44,27 +44,32 @@ Object* object_create(Id id) {
 }
 
 Status object_destroy(Object* object) {
+  /*Check for content in object*/
   if (!object) {
     return ERROR;
   }
 
-  free(object);          /*Clears memory*/
+  /*Clear memory*/
+  free(object);          
   return OK;
 }
 
 Id object_get_id(Object* object){
+  /*Check for content in object*/
   if(!object){
     return NO_ID;
   }
-
+  /*returns the id */
   return object->id;
 }
 
 Status object_set_name(Object* object; char* name){
+  /*Checks for content*/
   if(!object|!name){
     return ERROR
   }
 
+  /*copies the input name to the variable name in the struct object*/
   if(!(strcpy(object->name, name))){
     return ERROR;
   }
@@ -73,6 +78,7 @@ Status object_set_name(Object* object; char* name){
 }
 
 char* object_get_name(Object* object){
+  /*Check for content in object*/
   if(!object){
     return NULL;
   }
@@ -81,11 +87,13 @@ char* object_get_name(Object* object){
 }
 
 Status object_set_location(Object* object, Id id){
+  /*Checks for content*/
   if (!object||!id){
     return ERROR;
   }
 
-  if(!(object->object_location=id)){        /*copies id of the location to the struct object and inside the struct into object_location*/  
+  /*copies the input to the variable object_location in the struct object*/
+  if(!(object->object_location=id)){  
     return ERROR;
   }
 
@@ -93,6 +101,7 @@ Status object_set_location(Object* object, Id id){
 }
 
 Id object_get_location(Object* object){
+  /*Check for content in object*/
   if(!object){
     return NO_ID;
   }

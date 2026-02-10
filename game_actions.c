@@ -121,15 +121,22 @@ void game_actions_back(Game *game) {
 void game_actions_take(Game *game){
   Id current_id = NO_ID;
 
+
   if(player_get_n_objects(game->player)>=MAX_OBJECTS){
     return;
   }
+/*get object id and copy it on to current_id, then deletes the space from the object location*/
+  if(NO_ID==current_id=space_get_objects(game_get_space(game, player->player_location))
+  &&(OK==space_delete_object(game_get_space(game, player->player_location)))){
+    return;
+  }
 
-  if(NO_ID==(current_id=(space_get_objects(game->space))));
+  player_set_objects(game->player, current_id);  
 
-  player_set_objects(game->player , current_id);  
+  /*Set object location to NO_ID, since it is not located at any space.  I call game_get*/
+  object_set_location(game_get_object(game, current_id), NO_ID)
 
-  return
+  return;
 }
 
 void game_actions_drop(Game *game){
@@ -141,7 +148,8 @@ void game_actions_drop(Game *game){
 
   current_id=player_get_objects(game->player);
 
-  space_set_objects(game->space , current_id);
+  space_set_objects(game_get_space(game, player->player_location) , current_id);
 
+  return; 
 }
 
