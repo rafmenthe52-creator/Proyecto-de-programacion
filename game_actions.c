@@ -129,10 +129,8 @@ void game_actions_take(Game *game){
 
   current_id=(space_get_object(game->space))
 
-  current_id = player_get_objects();
-    if(current_id != NO_ID){
-      game->player->n_objects_player++;
-  }
+  player_set_objects(game->player , current_id);  
+
   return
 }
 
