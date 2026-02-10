@@ -121,7 +121,7 @@ Status player_set_objects(Player* player, Id id){
   return OK; 
 }
 
-*Id player_get_objects(Player* player){
+Id player_get_objects(Player* player){
   if(!player){
     return NO_ID;
   }
