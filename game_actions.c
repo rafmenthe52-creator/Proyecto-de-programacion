@@ -10,6 +10,7 @@
 
 #include "game_actions.h"
 #include "player.h"
+#include "space.h"
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -27,9 +28,9 @@ void game_actions_next(Game *game);
 
 void game_actions_back(Game *game);
 
-void game_actions_take(Game *game, Player *player);
+void game_actions_take(Game *game);
 
-void game_actions_drop(Game *game, Player *player);
+void game_actions_drop(Game *game);
 
 /**
    Game actions implementation
@@ -89,6 +90,8 @@ void game_actions_next(Game *game) {
   space_id = game_get_player_location(game);
   if (space_id == NO_ID) {
     return;
+  }    if(current_id != NO_ID){
+      game->player->n_objects_player++;
   }
 
   current_id = space_get_south(game_get_space(game, space_id));
@@ -117,14 +120,14 @@ void game_actions_back(Game *game) {
   return;
 }
 
-void game_actions_take(Game *game, Player *player){
+void game_actions_take(Game *game){
   Id current_id = NO_ID;
 
-  if(player_get_n_objects(player)>=1){
+  if(player_get_n_objects(game->player)>=MAX_OBJECTS){
     return;
   }
 
-  current_id=(space_get_object)
+  current_id=(space_get_object(game->space))
 
   current_id = player_get_objects();
     if(current_id != NO_ID){
