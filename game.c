@@ -48,10 +48,18 @@ Status game_create_from_file(Game *game, char *filename) {
     return ERROR;
   }
 
-  if (game_load_spaces(game, filename) == ERROR) {
+  if (game_reader_load_spaces(game, filename)) {
     return ERROR;
   }
 
+  if(game_reader_load_objects(game, filename)){
+    return ERROR
+  }
+  
+if(game_reader_load_player(game, filename)){
+  return ERROR;
+}
+  
   /* The player and the object are located in the first space */
   game_set_player_location(game, game_get_space_id_at(game, 0));
   game_set_object_location(game, game_get_space_id_at(game, 0));

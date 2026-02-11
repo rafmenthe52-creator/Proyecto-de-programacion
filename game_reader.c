@@ -155,8 +155,6 @@ Status game_reader_load_player(Game* game, char* filename){
     if(strncmp("#:", 3 , line)){
       id = atol(strtok(line+3 , "|"));
       strcpy(name , strtok(line , "|"));
-      location = atol(strtok(line , "|"));
-      object = atol(strtok(line , "|"));
       objects = atol(strtok(line , "|"));
     }
   }  
@@ -165,7 +163,6 @@ Status game_reader_load_player(Game* game, char* filename){
     return ERROR;
   }else{
     player_set_name(name , player);
-    player_set_player_location(location , player);
     player_set_objects(objects , player);
     status==game_add_player(player))
   }

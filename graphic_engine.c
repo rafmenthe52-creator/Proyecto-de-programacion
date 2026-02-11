@@ -27,7 +27,11 @@
 #define HEIGHT_FDB 3
 
 struct _Graphic_engine {
-  Area *map, *descript, *banner, *help, *feedback;
+  Area *map; 
+  Area *descript;
+  Area *banner;
+  Area *help;
+  Area *feedback;
 };
 
 Graphic_engine *graphic_engine_create() {
@@ -143,7 +147,7 @@ void graphic_engine_paint_game(Graphic_engine *ge, Game *game) {
   screen_area_clear(ge->help);
   sprintf(str, " The commands you can use are:");
   screen_area_puts(ge->help, str);
-  sprintf(str, "     next or n, back or b, exit or e");
+  sprintf(str, "     next or n, back or b, exit or e, take or t, drop or d");
   screen_area_puts(ge->help, str);
 
   /* Paint in the feedback area */
