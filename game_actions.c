@@ -20,16 +20,58 @@
    Private functions
 */
 
+/**
+ * @brief It creates a new Game, allocating memory for it;
+ * @author Profesores PPROG
+ *
+ * @param game a pointer to a struct of type Game
+ * @return it returns the Status, either OK or ERROR
+ */
 void game_actions_unknown(Game *game);
 
+/**
+ * @brief It creates a new Game, allocating memory for it;
+ * @author Profesores PPROG
+ *
+ * @param game a pointer to a struct of type Game
+ * @return it returns the Status, either OK or ERROR
+ */
 void game_actions_exit(Game *game);
 
+/**
+ * @brief It creates a new Game, allocating memory for it;
+ * @author Profesores PPROG
+ *
+ * @param game a pointer to a struct of type Game
+ * @return it returns the Status, either OK or ERROR
+ */
 void game_actions_next(Game *game);
 
+/**
+ * @brief It creates a new Game, allocating memory for it;
+ * @author Profesores PPROG
+ *
+ * @param game a pointer to a struct of type Game
+ * @return it returns the Status, either OK or ERROR
+ */
 void game_actions_back(Game *game);
 
+/**
+ * @brief It creates a new Game, allocating memory for it;
+ * @author Adrian Covarrubias-AC & Rafael Velasco-RV
+ *
+ * @param game a pointer to a struct of type Game
+ * @return void (no return)
+ */
 void game_actions_take(Game *game);
 
+/**
+ * @brief This function puts the item in the space and deletes it from the player
+ * @author Adrian Covarrubas-AC & Rafael Velasco-RV
+ *
+ * @param game a pointer to a struct of type Game
+ * @return void (no return)
+ */
 void game_actions_drop(Game *game);
 
 /**
