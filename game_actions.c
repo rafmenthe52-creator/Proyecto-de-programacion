@@ -57,7 +57,7 @@ void game_actions_next(Game *game);
 void game_actions_back(Game *game);
 
 /**
- * @brief It creates a new Game, allocating memory for it;
+ * @brief This function puts the item in the space into the player and deletes it from the space
  * @author Adrian Covarrubias-AC & Rafael Velasco-RV
  *
  * @param game a pointer to a struct of type Game
@@ -66,7 +66,7 @@ void game_actions_back(Game *game);
 void game_actions_take(Game *game);
 
 /**
- * @brief This function puts the item in the space and deletes it from the player
+ * @brief This function puts the item from the player in the space and deletes it from the player
  * @author Adrian Covarrubas-AC & Rafael Velasco-RV
  *
  * @param game a pointer to a struct of type Game
@@ -227,7 +227,7 @@ void game_actions_drop(Game *game){
     return;
   }
 
-  /* Get object id from player inventory */
+  /* Get object id from player "inventory" */
   current_id = player_get_objects(game->player);
   if(current_id == NO_ID){
     return;
@@ -241,6 +241,8 @@ void game_actions_drop(Game *game){
   if(obj){
     object_set_location(obj, player_space_id);
   }
+
+  player_delete_object_from_inventory(game->player);
 
   return; 
 }

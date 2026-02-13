@@ -89,7 +89,7 @@ Id player_get_player_location(Player* player);
 int player_get_n_objects(Player* player);
 
 /**
-* @brief It gets the player inventory
+* @brief It adds an object to the player's "inventory" and updates n_objects accordingly
 * @author Adrian Covarrubias-AC
 * 
 * @param player a pointer to the player
@@ -98,13 +98,22 @@ int player_get_n_objects(Player* player);
 Status player_set_objects(Player* player, Id id);
 
 /**
-* @brief It gets the player inventory
+* @brief It gets the last objects id in the "inventory"
 * @author Adrian Covarrubias-AC 
 * 
 * @param player a pointer to the player
 * @return the players inventory
 */
 Id player_get_objects(Player* player);
+
+/**
+* @brief It deletes the last object in the players "inventory"
+* @author Rafael Velasco-RV
+* 
+* @param player a pointer to the player
+* @return The status, either ERROR or OK;
+*/
+Status player_delete_object_from_inventory(Player *player);
 
 /**
  * @brief It prints the player information

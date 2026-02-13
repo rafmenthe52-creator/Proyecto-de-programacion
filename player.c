@@ -114,16 +114,19 @@ Id player_get_objects(Player* player){
     return NO_ID;
   }
 
-  player->n_objects_player--;
-  return player->objects[(player->n_objects_player)+1];
+  /*returns the last object in "inventory"*/
+  return player->objects[(player->n_objects_player)];
 }
 
-  || player->n_objects_player == 0){
-    return NO_ID;
+Status player_delete_object_from_inventory(Player *player){
+  if(!playe||!id){
+    return ERROR;
   }
 
-  player->n_objects_player--;
-  return player->objects[(player->n_objects_player)+1];
+  player->objects[player->n_objects]=NO_ID
+  player->n_objects--;
+
+  return OK;
 }
 
 int player_get_n_objects(Player* player){
