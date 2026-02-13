@@ -247,3 +247,4 @@ void game_actions_drop(Game *game){
   return; 
 }
 
+/*Implement nw game actions for left right movement */
